@@ -1,25 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+
+import { Grid } from "@material-ui/core";
+import { apiKey, baseUrl, part, maxResults } from "./config";
+import { Video } from "./Components/Video/Video";
+import { SearchBar } from "./Components/SearchBar/SearchBar";
+import VideoList from "./Components/VideoList/VideoList";
+
+
+
+
 
 function App() {
+
+  const [videosData, setVideosData] = useState([])
+const [selectedVideo, setSelectedVideo] = useState(null)
+
+const formSubmit = async searchTerm => {
+  console.log(searchTerm);
+ 
+
+  const response = await fetch(`${baseUrl}/search?type=video&part=${part}&maxResults=${maxResults}&q=${searchTerm}&key=${apiKey}`)
+  const data = await response.json()
+  setVideosData(data.items)
+  setSelectedVideo(data.items[0])
+  console.log(data.items)
+  console.log(data.items[0])
+};
+
+const videoClick = (video) => {
+  setSelectedVideo(video)
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid justify="center" container spacing={10}>
+      <Grid item xs={12}>
+        <Grid container spacing={5}>
+          <Grid item xs={12}>
+            {/* search bar */}
+            <SearchBar formSubmit={formSubmit} />
+          </Grid>
+          <Grid item xs={8}>
+            {/* video */}
+            <Video selectedVideo={selectedVideo} />
+          </Grid>
+          <Grid item xs={4}>
+            {/* video list */}
+            <VideoList videosData={videosData} videoClick={videoClick} />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 
