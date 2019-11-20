@@ -6,10 +6,11 @@ import { SearchBar } from "./Components/SearchBar/SearchBar";
 import { Container } from "@material-ui/core";
 import VideoList from "./Components/VideoList/VideoList";
 import { MyAppBar } from "./Components/MyAppBar/MyAppBar";
+import "./App.css";
 
 function App() {
   useEffect(() => {
-    formSubmit("html5");
+    formSubmit("react js");
   }, []);
 
   const [videosData, setVideosData] = useState([]);
@@ -23,8 +24,8 @@ function App() {
       const data = await response.json();
       setVideosData(data.items);
       setSelectedVideo(data.items[0]);
-      console.log(data.items);
-      console.log(data.items[0]);
+      // console.log(data.items);
+      // console.log(data.items[0]);
     } catch (error) {
       console.log(error);
     }
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <>
+      {/* App Bar */}
       <MyAppBar />
       <Container>
         <Grid container>

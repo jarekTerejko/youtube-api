@@ -1,19 +1,14 @@
 import React from "react";
 import { Paper, Grid, Typography } from "@material-ui/core";
-// import { flexbox } from "@material-ui/system";
 
 const VideoItem = ({ videoData, videoClick }) => {
   return (
-    <Grid style={{textAlign: "center"}} item xs={12} sm={6} md={4} lg={3}>
+    <Grid style={{ textAlign: "center" }} item xs={12} sm={6} md={4} lg={3}>
       <Paper
         style={{
-        //   display: flexbox,
-        //   alignItems: "center",
-        //   justifyItems: "center",
-        //   textAlign: "center",
           padding: "10px",
           cursor: "pointer",
-        height: "100%"
+          height: "100%"
         }}
         onClick={() => videoClick(videoData)}
       >

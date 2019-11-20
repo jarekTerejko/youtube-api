@@ -4,28 +4,22 @@ import { Toolbar } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 
-// import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-// import MenuIcon from "@material-ui/icons/Menu";
-
 export const MyAppBar = () => {
   return (
     <AppBar
       position="static"
       color="secondary"
-      style={{ marginBottom: "30px" }}
+      style={{
+        marginBottom: "30px",
+        backgroundImage:
+          "linear-gradient( 89.7deg,  rgba(0,0,0,1) -10.7%, rgba(53,92,125,1) 88.8% )"
+      }}
     >
       <Toolbar>
-        {/* <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-        >
-          <MenuIcon />
-        </IconButton> */}
         <Typography variant="h6">
-          <Link href="/" underline="none" style={{color: "#fff"}}>My YouTube App</Link>
+          <Link href="/" underline="none" style={{ color: "#fff" }}>
+            My YouTube App
+          </Link>
         </Typography>
       </Toolbar>
     </AppBar>
