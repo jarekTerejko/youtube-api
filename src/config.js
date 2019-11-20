@@ -4,6 +4,6 @@ const baseUrl = `https://www.googleapis.com/youtube/v3`
 
 const part = `snippet`
 
-const maxResults = 10
+const maxResults = 20
 
 export {apiKey, baseUrl, part, maxResults}

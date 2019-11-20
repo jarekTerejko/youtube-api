@@ -1,5 +1,6 @@
 import React from "react";
 import { Paper, Typography } from "@material-ui/core";
+import './Video.css'
 
 export const Video = ({ selectedVideo }) => {
   if (!selectedVideo) return null;
@@ -8,13 +9,20 @@ export const Video = ({ selectedVideo }) => {
 
   return (
     <Paper elevation={6} style={{ padding: "10px" }}>
-      <iframe
+    <div className="video-container">
+    <iframe
         frameBorder="0"
-        width="100%"
-        height="360px"
+        // width="100%"
+        // height="360px"
         title="Video Player"
-        src={videoSrc}
+        id="ytplayer"
+        type="text/html"
+        src={`${videoSrc}?autoplay=1`}
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
       ></iframe>
+    </div>
+      
       <Typography variant="h4" style={{ marginTop: "20px" }}>
         {selectedVideo.snippet.title}
       </Typography>
